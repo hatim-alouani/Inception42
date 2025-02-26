@@ -1,0 +1,76 @@
+services:
+
+  mariadb:
+    container_name: mariadb
+    build: ./requirements/mariadb
+    volumes:
+      - mariadb:/var/lib/mysql
+    env_file:
+      - .env
+    secrets:
+      - db_password
+      - db_root_password
+    networks:
+      - inception
+    restart: always
+
+  nginx:
+    container_name: nginx
+    build: ./requirements/nginx
+    ports:
+      - "443:443"
+    depends_on:
+      - wordpress
+    volumes:
+      - wordpress:/var/www/wordpress
+    env_file:
+      - .env
+    networks:
+      - inception
+    restart: always
+
+  wordpress:
+    container_name: wordpress
+    build: ./requirements/wordpress
+    depends_on:
+      - mariadb
+    volumes:
+      - wordpress:/var/www/wordpress
+    env_file:
+      - .env
+    secrets:
+      - wordpress_admin_password
+      - wordpress_new_user_password
+      -  db_password
+    networks:
+      - inception
+    restart: always
+
+volumes:
+  mariadb:
+   driver: local
+   driver_opts:
+      device: $HOME/data/mariadb
+      type: none
+      o: bind
+
+  wordpress:
+    driver: local
+    driver_opts:
+      device: $HOME/data/wordpress
+      type: none
+      o: bind
+ 
+networks:
+  inception:
+   name: inception
+
+secrets:
+  db_password:
+    file: $HOME/Inception/secrets/db_password.txt
+  db_root_password:
+    file: $HOME/Inception/secrets/db_root_password.txt
+  wordpress_admin_password:
+    file: $HOME/Inception/secrets/wordpress_admin_password.txt
+  wordpress_new_user_password:
+    file: $HOME/Inception/secrets/wordpress_new_user_password.txt
