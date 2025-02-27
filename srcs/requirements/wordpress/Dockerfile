@@ -8,6 +8,8 @@ RUN chmod +x /auto_config.sh
 
 WORKDIR /var/www/wordpress
 
+EXPOSE 9000
+
 RUN mkdir -p /run/php
 
 ENTRYPOINT [ "bash", "/auto_config.sh" ]
