@@ -16,7 +16,7 @@ clean:
 	@echo -e "$(GREEN)[✔] Containers stopped and removed.$(NC)"
 
 fclean: clean
-	@echo -e "$(RED)[!] Removing volumes and secrets...$(NC)"
+	@echo -e "$(RED)[!] Removing volumes...$(NC)"
 	@docker system prune -af --volumes
 	@sudo rm -rf ~/data/mariadb ~/data/wordpress
 	@echo -e "$(GREEN)[✔] Cleanup complete!$(NC)"

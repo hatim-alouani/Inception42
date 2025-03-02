@@ -2,16 +2,14 @@ FROM debian:bullseye
 
 RUN apt update  &&  apt install -y curl git wget php php-fpm php-mysql mariadb-client
 
-COPY ./auto_config.sh /
+EXPOSE 9000
 
-RUN chmod +x /auto_config.sh
+COPY ./tools/wordpress.sh /
 
 WORKDIR /var/www/wordpress
 
-EXPOSE 9000
-
 RUN mkdir -p /run/php
 
-ENTRYPOINT [ "bash", "/auto_config.sh" ]
+RUN chmod +x /wordpress.sh
 
-CMD ["php-fpm7.4", "-F"]
+ENTRYPOINT ["/wordpress.sh"]
