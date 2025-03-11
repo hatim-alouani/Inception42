@@ -1,6 +1,6 @@
 FROM debian:bullseye
 
-RUN apt update  &&  apt install -y curl git wget php php-fpm php-mysql mariadb-client
+RUN apt update  &&  apt install -y curl git wget php php7.4-fpm  php-mysql mariadb-client
 
 EXPOSE 9000
 

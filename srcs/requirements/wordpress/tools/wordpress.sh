@@ -32,6 +32,6 @@ chown -R www-data:www-data /var/www/wordpress
 
 chmod -R 775 /var/www/wordpress
 
-service php-fpm7.4 reload 
+service php7.4-fpm reload 
 
 exec php-fpm7.4 -F
