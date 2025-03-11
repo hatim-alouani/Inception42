@@ -1,12 +1,5 @@
 #!/bin/bash
 
-if [[ ! -f /run/secrets/wordpress_admin_password || \
-      ! -f /run/secrets/wordpress_user_password || \
-      ! -f /run/secrets/db_password ]]; then
-  echo "Error: One or more required secret files are missing!" >&2
-  exit 1
-fi
-
 wordpress_admin_password=$(cat /run/secrets/wordpress_admin_password)
 wordpress_user_password=$(cat /run/secrets/wordpress_user_password)
 db_password=$(cat /run/secrets/db_password)
@@ -39,6 +32,6 @@ chown -R www-data:www-data /var/www/wordpress
 
 chmod -R 775 /var/www/wordpress
 
-service php7.4-fpm reload 
+service php-fpm7.4 reload 
 
-exec php7.4-fpm -F
+exec php-fpm7.4 -F

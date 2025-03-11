@@ -12,7 +12,7 @@ services:
       - db_root_password
     networks:
       - inception
-    image: mariadb:alouani
+    image: mariadb:haalouan
     restart: always
 
   nginx:
@@ -28,7 +28,7 @@ services:
       - .env
     networks:
       - inception
-    image: nginx:alouani
+    image: nginx:haalouan
     restart: always
 
   wordpress:
@@ -38,7 +38,7 @@ services:
       - mariadb
     volumes:
       - wordpress:/var/www/wordpress
-    image: wordpress:alouani
+    image: wordpress:haalouan
     env_file:
       - .env
     secrets:
