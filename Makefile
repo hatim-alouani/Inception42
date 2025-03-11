@@ -7,12 +7,12 @@ NC=\033[0m
 all:
 	@mkdir -p ~/data/wordpress ~/data/mariadb
 	@echo -e "$(BLUE)[+] Starting Docker containers...$(NC)"
-	@docker compose -f srcs/docker-compose.yml up --build -d
+	@docker-compose -f srcs/docker-compose.yml up --build -d
 	@echo -e "$(GREEN)[✔] Containers are running!$(NC)"
 
 clean:
 	@echo -e "$(YELLOW)[-] Stopping and removing containers...$(NC)"
-	@docker compose -f srcs/docker-compose.yml down -v
+	@docker-compose -f srcs/docker-compose.yml down -v
 	@echo -e "$(GREEN)[✔] Containers stopped and removed.$(NC)"
 
 fclean: clean
