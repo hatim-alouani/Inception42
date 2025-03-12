@@ -1,9 +1,5 @@
 #!/bin/bash
 
-wordpress_admin_password=$(cat /run/secrets/wordpress_admin_password)
-wordpress_user_password=$(cat /run/secrets/wordpress_user_password)
-db_password=$(cat /run/secrets/db_password)
-
 sleep 10
 
 rm -rf /var/www/wordpress/*
