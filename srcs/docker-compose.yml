@@ -47,14 +47,14 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: $HOME/data/mariadb
+      device: /home/haalouan/data/mariadb
       o: bind
 
   wordpress:
     driver: local
     driver_opts:
       type: none
-      device: $HOME/data/wordpress
+      device: /home/haalouan/data/wordpress
       o: bind
  
 networks:
