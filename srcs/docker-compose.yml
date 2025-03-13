@@ -10,7 +10,7 @@ services:
     networks:
       - inception
     image: mariadb:haalouan
-    restart: unless-stopped
+    restart: always
 
   nginx:
     container_name: nginx
@@ -26,7 +26,7 @@ services:
     networks:
       - inception
     image: nginx:haalouan
-    restart: unless-stopped
+    restart: always
 
   wordpress:
     container_name: wordpress
@@ -40,7 +40,7 @@ services:
       - .env
     networks:
       - inception
-    restart: unless-stopped
+    restart: always
 
 volumes:
   mariadb:
