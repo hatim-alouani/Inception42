@@ -7,7 +7,7 @@ NC=\033[0m
 all:
 	@mkdir -p ~/data/wordpress ~/data/mariadb
 	@echo -e "$(BLUE)[+] Starting Docker containers...$(NC)"
-	@docker-compose -f srcs/docker-compose.yml up --build
+	@docker-compose -f srcs/docker-compose.yml up --build -d
 	@echo -e "$(GREEN)[✔] Containers are running!$(NC)"
 
 clean:
