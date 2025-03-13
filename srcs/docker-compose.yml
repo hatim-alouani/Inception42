@@ -40,24 +40,17 @@ services:
       - .env
     networks:
       - inception
-    dns:
-      -  8.8.8.8
-      -  1.1.1.1
     restart: always
 
 volumes:
   mariadb:
-   driver: local
    driver_opts:
       device: $HOME/data/mariadb
-      type: none
       o: bind
 
   wordpress:
-    driver: local
     driver_opts:
       device: $HOME/data/wordpress
-      type: none
       o: bind
  
 networks:
