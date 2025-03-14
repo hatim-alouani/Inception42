@@ -14,11 +14,9 @@ clean:
 	@echo -e "$(YELLOW)[-] Stopping and removing containers...$(NC)"
 	@docker-compose -f srcs/docker-compose.yml down -v
 	@echo -e "$(GREEN)[✔] Containers stopped and removed.$(NC)"
-
-fclean: clean
 	@echo -e "$(RED)[!] Removing volumes...$(NC)"
 	@docker system prune -af --volumes
 	@sudo rm -rf /home/haalouan/data/mariadb /home/haalouan/data/wordpress
 	@echo -e "$(GREEN)[✔] Cleanup complete!$(NC)"
 
-re: fclean all
+re: clean all
